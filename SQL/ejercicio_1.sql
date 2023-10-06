@@ -50,17 +50,25 @@ ORDER BY id ASC
 /* Consultar todos los pedidos de la tabla "Pedidos" junto con los nombres de los clientes correspondientes.*/
 
 /* Consultar los productos de la tabla "Productos" cuyo precio sea mayor a $50.*/
-
+select * from public.productos
+where precio > 50
 /* Consultar los pedidos de la tabla "Pedidos" que tengan una cantidad mayor o igual a 5.*/
-
+select * from public.pedidos
+where cantidad >= 50
 /* Consultar los clientes de la tabla "Clientes" cuyo nombre empiece con la letra "A".*/
-
+select * from public.clientes
+where nombre like 'A%'
 /* Realizar una consulta que muestre el nombre del cliente y el total de pedidos realizados por cada cliente.*/
-
+select clientes.nombre, pedidos.cantidad from public.clientes
+left join public.pedidos
+on clientes.id = pedidos.cliente_id
 /* Realizar una consulta que muestre el nombre del producto y la cantidad total de pedidos de ese producto.*/
-
+select productos.nombre, pedidos.cantidad from public.productos
+left join public.pedidos
+on productos.id = pedidos.clientes_id
 /* Agregar una columna llamada "fecha" a la tabla "Pedidos" de tipo fecha.*/
-
+alter table public.pedidos
+add fecha date
 /* Agregar una clave externa a la tabla "Pedidos" que haga referencia a la tabla "Productos" en la columna "producto".*/
 
 /* Realizar una consulta que muestre los nombres de los clientes, los nombres de los productos y las cantidades de los pedidos donde coincida la clave externa.*/
